@@ -1,5 +1,9 @@
 #include <iostream>
 
+// QUESTIONS:
+// about DINAMYC extension
+
+
 class StackArr {
 public:
 	StackArr() = default;
@@ -22,8 +26,11 @@ private:
 
 int main()
 {
-	StackArr a(8);
-	// std::cout << a.Top() << std::endl;
+	StackArr a(1);
+	a.Push(6);
+	a.Push(7);
+	a.Push(8);
+	std::cout << a.Top() << std::endl;
 
 }
 
@@ -37,6 +44,7 @@ int main()
 
 StackArr::StackArr(const int size) { 
 	size_ = size; 
+	data_ = new int[2]; // question here
 }
 
 bool StackArr::isEmpty() noexcept {
@@ -47,7 +55,7 @@ bool StackArr::isEmpty() noexcept {
 }
 
 const int& StackArr::Top() {
-	if (head_ = -1) {
+	if (head_ == -1) {
 		throw std::logic_error("Массив пустой");
 	}
 	else {
@@ -56,13 +64,14 @@ const int& StackArr::Top() {
 }
 
 void StackArr::Push(const int& object) {
-	if (head_ < size_) {
+	// if (head_ < size_ - 1) {
 		head_ += 1;
 		data_[head_] = object;
-	}
-	else {
-		// нужно увеличить size на 1 динамически и добавить туда
-	}
+	// }
+	// else {
+		// нужно увеличить size на 1 динамически и добавить туда ???
+
+	//}
 }
 
 void StackArr::Pop() {
