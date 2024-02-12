@@ -17,6 +17,7 @@ public:
 
 	// methods
 	bool isEmpty() noexcept;
+	int Size();
 	const int& Top(); // see Top element
 	void Push(const int& object); // add element on Top
 	void Pop(); // delete element from Top

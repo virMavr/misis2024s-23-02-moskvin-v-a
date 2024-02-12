@@ -3,8 +3,13 @@
 // realization
 
 Stack::Stack(const int size) { 
-	size_ = size; 
-	data_ = new int[2]; // question here
+	if (size < 0) {
+		throw std::logic_error("Размер массива не может быть отрицательным");
+	}
+	else {
+		size_ = size;
+		data_ = new int[size_]; // question here
+	}
 }
 
 bool Stack::isEmpty() noexcept {
@@ -12,6 +17,10 @@ bool Stack::isEmpty() noexcept {
 		return true;
 	}
 	return false;
+}
+
+int Stack::Size() {
+	return size_;
 }
 
 const int& Stack::Top() {
@@ -24,14 +33,28 @@ const int& Stack::Top() {
 }
 
 void Stack::Push(const int& object) {
-	// if (head_ < size_ - 1) {
+	// just add new element
+	if (head_ < size_ - 1) {
 		head_ += 1;
 		data_[head_] = object;
-	// }
-	// else {
-		// нужно увеличить size на 1 динамически и добавить туда ???
-
-	//}
+	}
+	else {
+		// increase the size of stack by creating new,copy; and add new element
+		int* newdata_ = new int[size_ * 2];
+		for (int i = 0; i < size_*2; i++) {
+			if (i < size_) {
+				*(newdata_ + i) = *(data_ + i);
+			}
+			else {
+				*(newdata_ + i) = 0;
+			}
+		}
+		delete[] data_;
+		data_ = newdata_;
+		size_ *= 2;
+		head_ += 1;
+		data_[head_] = object;
+	}
 }
 
 void Stack::Pop() {

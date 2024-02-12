@@ -7,3 +7,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(prj.codeforces)
 add_subdirectory(prj.lab)
 add_subdirectory(prj.test)
+
+add_executable(testsomething testsomething.cpp)
+add_executable(stacklst stacklst.cpp)

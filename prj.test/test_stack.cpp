@@ -4,10 +4,14 @@
 
 int main()
 {
-	Stack a(1);
+	Stack a(2);
 	a.Push(6);
 	a.Push(7);
-	a.Push(8);
+	std::cout << a.Size() << std::endl;
+	a.Push(4);
+	std::cout << a.Top() << std::endl;
+	std::cout << a.Size() << std::endl;
+	a.Pop();
 	std::cout << a.Top() << std::endl;
 }
 

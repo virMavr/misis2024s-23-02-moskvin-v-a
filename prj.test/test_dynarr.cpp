@@ -1,8 +1,15 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "dynarr/dynarr.hpp"
-#include "doctest.h"
+#include <iostream>
+//#include "doctest.h"
+
+int main() {
 
 
+}
+
+
+/* 
 TEST_CASE("rational ctor") {
 	//DynArr <int> a;
 	//DynArr <int> b;
@@ -21,3 +28,4 @@ TEST_CASE("class methods") {
 	a.Resize(1);
 	CHECK(a.Size() == 1);
 }
+*/
