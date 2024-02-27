@@ -1,0 +1,9 @@
+1. update complex
+
+2. queuearr + tests (check cyclic)
+
+3. stacklst tests (DOCTEST)
+
+4. change int to complex
+
+5. define + [[nodiscard]], noexcept

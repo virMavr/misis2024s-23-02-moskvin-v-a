@@ -1,9 +1,10 @@
-
+#include <iostream>
 
 class QueueArr
 {
 public:
 	QueueArr() = default;
+	QueueArr(const int& s);
 	~QueueArr() = default;
 	QueueArr(const QueueArr&) = default;
 
