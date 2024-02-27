@@ -34,5 +34,5 @@
 .vs/
 out/
 
-need
-test
+need.txt
+test.cpp
