@@ -1,8 +1,8 @@
-#include "stack.hpp"
+#include "stackarr.hpp"
 
 // realization
 
-Stack::Stack(const int size) { 
+StackArr::StackArr(const int size) { 
 	if (size < 0) {
 		throw std::logic_error("Размер массива не может быть отрицательным");
 	}
@@ -12,18 +12,18 @@ Stack::Stack(const int size) {
 	}
 }
 
-bool Stack::isEmpty() noexcept {
+bool StackArr::isEmpty() noexcept {
 	if (head_ == -1) {
 		return true;
 	}
 	return false;
 }
 
-int Stack::Size() {
+int StackArr::Size() {
 	return size_;
 }
 
-const int& Stack::Top() {
+const int& StackArr::Top() {
 	if (head_ == -1) {
 		throw std::logic_error("Массив пустой");
 	}
@@ -32,14 +32,14 @@ const int& Stack::Top() {
 	}
 }
 
-void Stack::Push(const int& object) {
+void StackArr::Push(const int& object) {
 	// just add new element
 	if (head_ < size_ - 1) {
 		head_ += 1;
 		data_[head_] = object;
 	}
 	else {
-		// increase the size of stack by creating new,copy; and add new element
+		// increase the size of StackArr by creating new,copy; and add new element
 		int* newdata_ = new int[size_ * 2];
 		for (int i = 0; i < size_*2; i++) {
 			if (i < size_) {
@@ -57,7 +57,7 @@ void Stack::Push(const int& object) {
 	}
 }
 
-void Stack::Pop() {
+void StackArr::Pop() {
 	if (head_ == -1) {
 		throw std::logic_error("Массив пустой!");
 	}

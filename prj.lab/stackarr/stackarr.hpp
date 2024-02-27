@@ -1,4 +1,4 @@
-// stack, based on array
+// StackArr, based on array
 #include <iostream>
 
 // declaring
@@ -7,13 +7,13 @@
 // about DINAMYC extension
 
 
-class Stack {
+class StackArr {
 public:
-	Stack() = default;
-	Stack(const int size);
-	Stack(const Stack&) = default;
-	~Stack() = default;
-	Stack& operator=(const Stack&) = default;
+	StackArr() = default;
+	StackArr(const int size);
+	StackArr(const StackArr&) = default;
+	~StackArr() = default;
+	StackArr& operator=(const StackArr&) = default;
 
 	// methods
 	bool isEmpty() noexcept;
@@ -23,7 +23,7 @@ public:
 	void Pop(); // delete element from Top
 
 private:
-	std::ptrdiff_t size_ = 0; // size of the stack
-	int* data_ = nullptr; // pointer on stack
+	std::ptrdiff_t size_ = 0; // size of the StackArr
+	int* data_ = nullptr; // pointer on StackArr
 	int head_ = -1; // index
 };

@@ -1,10 +1,10 @@
-#include "stack/stack.hpp"
+#include "stackarr/stackarr.hpp"
 #include <iostream>
 
 
 int main()
 {
-	Stack a(2);
+	StackArr a(2);
 	a.Push(6);
 	a.Push(7);
 	std::cout << a.Size() << std::endl;
