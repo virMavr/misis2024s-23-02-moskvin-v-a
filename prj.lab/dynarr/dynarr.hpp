@@ -3,6 +3,9 @@
 // QUESTIONS:
 // what is the difference between size and capacity
 
+#ifndef DYNARR_LIBRARY
+#define DYNARR_LIBRARY
+
 class DynArr {
 public:
 	DynArr() = default;
@@ -19,3 +22,5 @@ private:
 	std::ptrdiff_t capacity_ = 0; // common size of array
 	float* data_ = nullptr;
 };
+
+#endif

@@ -1,6 +1,9 @@
 #include <iostream>
 #include <sstream>
 
+#ifndef RATIONAL_LIBRARY
+#define RATIONAL_LIBRARY
+
 class Rational {
 public:
 	Rational() = default; //дефолтный конструктор
@@ -59,3 +62,5 @@ inline std::istream& operator>>(std::istream& istrm, Rational& rhs)
 {
 	return rhs.readFrom(istrm);
 }
+
+#endif

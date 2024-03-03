@@ -1,4 +1,5 @@
-
+#ifndef QUEUELST_LIBRARY
+#define QUEUELST_LIBRARY
 
 class QueueLst 
 {
@@ -23,3 +24,5 @@ private:
 	Node* head_ = nullptr;
 	Node* tail_ = nullptr;
 };
+
+#endif

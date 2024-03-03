@@ -5,7 +5,8 @@
 
 // QUESTIONS:
 // about DINAMYC extension
-
+#ifndef STACKARR_LIBRARY
+#define STACKARR_LIBRARY
 
 class StackArr {
 public:
@@ -27,3 +28,5 @@ private:
 	int* data_ = nullptr; // pointer on StackArr
 	int head_ = -1; // index
 };
+
+#endif

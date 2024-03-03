@@ -8,6 +8,11 @@ QueueArr::QueueArr(const int& s) {
 	size_ = s;
 }
 
+QueueArr::~QueueArr() {
+	while (!isEmpty()) {
+		Pop();
+	}
+}
 bool QueueArr::isEmpty() {
 	if (head_ == -1) {
 		return true;
@@ -51,7 +56,7 @@ void QueueArr::Push(const int& object) {
 	data_[tail_] = object;
 }
 
-void QueueArr::Pop() {
+void QueueArr::Pop() noexcept {
 	// if one number in q
 	if (head_ == tail_) {
 		head_ = -1;
@@ -65,6 +70,5 @@ void QueueArr::Pop() {
 		if (head_ == size_) {
 			head_ = 0;
 		}
-		size_ -= 1;
 	}
 }

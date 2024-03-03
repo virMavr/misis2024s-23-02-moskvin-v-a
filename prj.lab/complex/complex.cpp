@@ -1,65 +1,146 @@
 #include "complex.hpp"
 
-Complex::Complex(const double real)
-  : Complex(real, 0.0)
-{
+// C-TORS
+Complex::Complex(const double rhs) {
+	re_ = rhs;
 }
 
-Complex::Complex(const double real, const double imaginary)
-  : re(real)
-  , im(imaginary)
-{
+Complex::Complex(const double& re, const double& im) {
+	re_ = re;
+	im_ = im;
 }
 
-Complex& Complex::operator+=(const Complex& rhs)
-{
-  re += rhs.re;
-  im += rhs.im;
-  return *this;
+void Complex::operator=(const Complex& rhs) {
+	re_ = rhs.re_;
+	im_ = rhs.im_;
 }
 
-Complex operator+(const Complex& lhs, const Complex& rhs)
-{
-  Complex sum(lhs);
-  sum += rhs;
-  return sum;
+
+
+
+// LOGICS
+bool Complex::operator==(const Complex& rhs) {
+	return (re_ == rhs.re_ && im_ == rhs.im_);
 }
 
-Complex operator-(const Complex& lhs, const Complex& rhs)
-{
-  return Complex(lhs.re - rhs.re, lhs.im - rhs.im);
+bool Complex::operator!=(const Complex& rhs) {
+	return !operator==(rhs);
 }
 
-Complex& Complex::operator*=(const double rhs)
-{
-  re *= rhs;
-  im *= rhs;
-  return *this;
+
+
+
+// ASSIGNMENTS operators
+Complex& Complex::operator+=(const Complex& rhs) {
+	re_ += rhs.re_;
+	im_ += rhs.im_;
+	return *this;
+}
+Complex& Complex::operator+=(const double& rhs) {
+	return operator+=(Complex(rhs));
 }
 
-std::ostream& Complex::writeTo(std::ostream& ostrm) const
-{
-  ostrm << leftBrace << re << separator << im << rightBrace;
-  return ostrm;
+Complex& Complex::operator-=(const Complex& rhs) {
+	re_ -= rhs.re_;
+	im_ -= rhs.im_;
+	return *this;
+}
+Complex& Complex::operator-=(const double& rhs) {
+	return operator-=(Complex(rhs));
 }
 
-std::istream& Complex::readFrom(std::istream& istrm)
+Complex& Complex::operator*=(const Complex& rhs) {
+	re_ = (re_ * rhs.re_ - im_ * rhs.im_); // a1*a2-b1*b2
+	im_ = (re_ * rhs.im_ + im_ * rhs.re_); // a1*b2+b1*a2
+	return *this;
+}
+Complex& Complex::operator*=(const double& rhs) {
+	return operator*=(Complex(rhs));
+}
+
+Complex& Complex::operator/=(const Complex& rhs) {
+	re_ = (re_ * rhs.re_ + im_ * rhs.im_) / (rhs.re_ * rhs.re_ + rhs.im_ * rhs.im_);// a1*a2-b1*b2
+	im_ = (rhs.re_ * im_ - re_ * rhs.im_) / (rhs.re_ * rhs.re_ + rhs.im_ * rhs.im_);// a1*b2+b1*a2
+	return *this;
+}
+Complex& Complex::operator/=(const double& rhs) {
+	return operator/=(Complex(rhs));
+}
+
+
+
+// ARITHMETIC operators
+Complex operator+(const Complex& lhs, const Complex& rhs) {
+	return Complex(lhs) += rhs;
+}
+Complex operator+(const Complex& lhs, const double rhs) {
+	return Complex(lhs) += Complex(rhs);
+}
+Complex operator+(const double lhs, const Complex& rhs) {
+	return Complex(lhs) += Complex(rhs);
+}
+
+Complex operator-(const Complex& lhs, const Complex& rhs) {
+	return Complex(lhs) -= rhs;
+}
+Complex operator-(const Complex& lhs, const double& rhs) {
+	return Complex(lhs) -= Complex(rhs);
+}
+Complex operator-(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) -= Complex(rhs);
+}
+
+Complex operator*(const Complex& lhs, const Complex& rhs) {
+	return Complex(lhs) *= rhs;
+}
+Complex operator*(const Complex& lhs, const double& rhs) {
+	return Complex(lhs) *= Complex(rhs);
+}
+Complex operator*(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) *= Complex(rhs);
+}
+
+Complex operator/(const Complex& lhs, const Complex& rhs) {
+	return Complex(lhs) /= rhs;
+}
+Complex operator/(const Complex& lhs, const double& rhs) {
+	return Complex(lhs) /= Complex(rhs);
+}
+Complex operator/(const double& lhs, const Complex& rhs) {
+	return Complex(lhs) /= Complex(rhs);
+}
+
+
+
+//IO streams
+std::ostream& operator<<(std::ostream& ostrm,const Complex& rhs)
 {
-  char leftBrace(0);
-  double real(0.0);
-  char comma(0);
-  double imaganary(0.0);
-  char rightBrace(0);
-  istrm >> leftBrace >> real >> comma >> imaganary >> rightBrace;
-  if (istrm.good()) {
-    if ((Complex::leftBrace == leftBrace) && (Complex::separator == comma)
-      && (Complex::rightBrace == rightBrace)) {
-      re = real;
-      im = imaganary;
-    }
-    else {
-      istrm.setstate(std::ios_base::failbit);
-    }
-  }
-  return istrm;
+	// IF I WANT in (...+...i), NEED TO COPE WITH HOW TO CHOOSE + or - and other
+	// ostrm << rhs.re_ << "+" << rhs.im_ << "i"; 
+	// 
+	// => doing how Dmitry Valerievich say
+
+	ostrm << "{" << rhs.re_ << "," << rhs.im_ << "}";
+	return ostrm;
+}
+std::istream& operator>>(std::istream& istrm, Complex& rhs) 
+{
+	double real;
+	double imaginary;
+	char leftCurlyBrace;
+	char comma;
+	char rightCurlyBrace;
+
+	istrm >> leftCurlyBrace >> real >> comma >> imaginary >> rightCurlyBrace;
+
+	if (istrm.good()) {
+		if (leftCurlyBrace == '{' && comma == ',' && rightCurlyBrace == '}') {
+			rhs.re_ = real;
+			rhs.im_ = imaginary;
+		}
+		else {
+			istrm.setstate(std::ios_base::failbit);
+		}
+	}
+	return istrm;
 }

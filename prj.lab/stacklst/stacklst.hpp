@@ -1,5 +1,8 @@
 #include <iostream>
 
+#ifndef STACKLST_LIBRARY
+#define STACKLST_LIBRARY
+
 class StackLst {
 public:
 	StackLst() = default;
@@ -19,3 +22,5 @@ private:
 	};
 	Node* head_ = nullptr;
 };
+
+#endif

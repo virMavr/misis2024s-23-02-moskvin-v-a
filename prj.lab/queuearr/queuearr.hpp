@@ -1,17 +1,20 @@
 #include <iostream>
 
+#ifndef QUEUEARR_LIBRARY
+#define QUEUEARR_LIBRARY
+
 class QueueArr
 {
 public:
 	QueueArr() = default;
 	QueueArr(const int& s);
-	~QueueArr() = default;
+	~QueueArr();
 	QueueArr(const QueueArr&) = default;
 
 	bool isEmpty();
-	int Top();
+	[[nodiscard]] int Top();
 	void Push(const int& object);
-	void Pop();
+	void Pop() noexcept;
 
 private:
 	int size_ = 0;
@@ -19,3 +22,5 @@ private:
 	int head_ = -1;
 	int tail_ = -1;
 };
+
+#endif
