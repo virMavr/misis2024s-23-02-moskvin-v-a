@@ -7,6 +7,3 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(prj.codeforces)
 add_subdirectory(prj.lab)
 add_subdirectory(prj.test)
-
-add_executable(qlstpr "queuelstpr.cpp")
-target_link_libraries(qlstpr complex)
