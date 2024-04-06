@@ -1,0 +1,1 @@
+    31>D:\.dima\misis2023f-23-check\misis2024s-23-02-moskvin-v-a\prj.lab\stacklst\stacklst.cpp(7,1): warning C4722: StackLst::~StackLst: деструктор не возвращает ресурсы, возможна утечка памяти [D:\.dima\misis2023f-23-check\misis2024s-23-02-moskvin-v-a\build.check\prj.lab\stacklst\stacklst.vcxproj]
