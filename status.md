@@ -1,4 +1,4 @@
-CHECK: 20240406-032307
+CHECK: 20240414-234735
 ERROR: lab complex - test build failed
 STATUS: lab complex_io - test-ok
 STATUS: lab complex_m - test-failed
@@ -17,5 +17,5 @@ ERROR: lab queuelst - test build failed
 ERROR: lab queuelst_m - test build failed
 ERROR: lab queuelstpr - test build failed
 ERROR: lab queuelstpr_m - test build failed
-ERROR: lab bitset - test build failed
-ERROR: lab bitset_m - test build failed
+STATUS: lab bitset - test-failed
+STATUS: lab bitset_m - test-ok
