@@ -147,7 +147,7 @@ Release/D:/.dima/misis2023f-23-check/misis2024s-23-02-moskvin-v-a/bin.check/doct
 
 15% tests passed, 17 tests failed out of 20
 
-Total Test time (real) =   0.12 sec
+Total Test time (real) =   0.11 sec
 
 The following tests FAILED:
 	  1 - doctest_bitset (Failed)
