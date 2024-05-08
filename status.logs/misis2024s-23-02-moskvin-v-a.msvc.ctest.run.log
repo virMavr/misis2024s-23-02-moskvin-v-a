@@ -142,7 +142,7 @@ Release/D:/projects/misis2023f-23-check/misis2024s-23-02-moskvin-v-a/bin.check/d
 16/20 Test  #4: doctest_complex_io ...............   Passed    0.02 sec
 17/20 Test  #5: doctest_complex_m ................***Failed    0.02 sec
 18/20 Test  #7: doctest_rational_io ..............***Failed    0.02 sec
-19/20 Test  #8: doctest_rational_m ...............   Passed    0.01 sec
+19/20 Test  #8: doctest_rational_m ...............   Passed    0.02 sec
 20/20 Test #10: doctest_dynarr_m .................***Failed    0.01 sec
 
 15% tests passed, 17 tests failed out of 20
